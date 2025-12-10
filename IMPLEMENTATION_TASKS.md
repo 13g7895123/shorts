@@ -103,15 +103,15 @@
 ## Phase 4: 階段3 AI 分析 (預估: 2-3天)
 
 ### Task 4.1: Gemini API 客戶端 ⚡ 核心
-- [ ] 實作 `src/analysis/gemini_client.py`
+- [x] 實作 `src/analysis/gemini_client.py`
   - API 認證與連接
   - 文本生成接口
   - 多模態分析接口 (影片/圖片)
   - 錯誤處理與重試
-- [ ] 添加 Gemini API Key 到環境變數
+- [x] 添加 Gemini API Key 到環境變數
 
 ### Task 4.2: 場景分析器
-- [ ] 實作 `src/analysis/scene_analyzer.py`
+- [x] 實作 `src/analysis/scene_analyzer.py`
   - 從 YouTube URL 獲取影片資訊
   - 調用 Gemini 分析影片分鏡
   - 提取關鍵幀描述
@@ -119,14 +119,14 @@
   - 輸出結構化分鏡數據 (JSON)
 
 ### Task 4.3: 提示詞生成器
-- [ ] 實作 `src/analysis/prompt_generator.py`
+- [x] 實作 `src/analysis/prompt_generator.py`
   - 根據分鏡生成 Sora 提示詞
   - 支援風格模板 (寫實、動畫、藝術等)
   - 提示詞優化與增強
   - 生成元數據 (標題、描述、標籤建議)
 
 ### Task 4.4: 腳本實作
-- [ ] 實作 `scripts/03_analyze_video.py`
+- [x] 實作 `scripts/03_analyze_video.py`
   - 從數據庫讀取待分析網址
   - 執行完整分析流程
   - 保存結果到 `data/analysis/`
@@ -200,21 +200,21 @@
 ## Phase 7: 階段8-9 分類與發布 (預估: 3-4天)
 
 ### Task 7.1: 影片分類器
-- [ ] 實作 `src/publishing/classifier.py`
+- [x] 實作 `src/publishing/classifier.py`
   - 基於內容分析結果分類
   - 按平台需求分類
   - 按主題/類型分類
   - 移動到對應 ready/ 子目錄
 
 ### Task 7.2: 元數據生成器
-- [ ] 實作 `src/publishing/metadata_builder.py`
+- [x] 實作 `src/publishing/metadata_builder.py`
   - 生成標題 (SEO 優化)
   - 生成描述
   - 生成標籤/Hashtags
   - 根據平台調整格式
 
 ### Task 7.3: YouTube 上傳器 ⚡ 優先
-- [ ] 實作 `src/publishing/uploaders/youtube.py`
+- [x] 實作 `src/publishing/uploaders/youtube.py`
   - YouTube Data API v3 認證
   - 影片上傳
   - 設置元數據
@@ -226,15 +226,17 @@
 - [ ] 實作 `src/publishing/uploaders/instagram.py`
 
 ### Task 7.5: 排程器
-- [ ] 實作 `src/publishing/scheduler.py`
+- [x] 實作 `src/publishing/scheduler.py`
   - 讀取排程配置
   - 管理上傳隊列
   - 避免同時上傳衝突
   - 記錄發布結果
 
 ### Task 7.6: 腳本實作
-- [ ] 實作 `scripts/06_classify_videos.py`
-- [ ] 實作 `scripts/07_schedule_upload.py`
+- [x] 實作 `scripts/04_classify_videos.py`
+- [x] 實作 `scripts/05_generate_metadata.py`
+- [x] 實作 `scripts/06_schedule_uploads.py`
+- [ ] 實作 `scripts/07_upload_to_youtube.py`
 
 ---
 
