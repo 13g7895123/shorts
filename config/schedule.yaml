@@ -1,0 +1,126 @@
+# Scheduling configuration for automated tasks
+
+# Timezone setting
+timezone: "UTC"
+
+# Job schedules
+jobs:
+  # Discover viral videos
+  discover_viral:
+    enabled: true
+    cron: "0 9 * * *"  # Daily at 9:00 AM
+    description: "Monitor and discover viral YouTube Shorts"
+    max_instances: 1
+    misfire_grace_time: 300
+  
+  # Analyze videos
+  analyze_videos:
+    enabled: true
+    cron: "0 10 * * *"  # Daily at 10:00 AM
+    description: "Analyze pending videos with Gemini AI"
+    max_instances: 2
+    misfire_grace_time: 600
+  
+  # Generate videos
+  generate_videos:
+    enabled: true
+    cron: "0 11 * * *"  # Daily at 11:00 AM
+    description: "Generate videos using Sora API"
+    max_instances: 1
+    misfire_grace_time: 1800
+  
+  # Process videos
+  process_videos:
+    enabled: true
+    cron: "0 14 * * *"  # Daily at 2:00 PM
+    description: "Process and optimize generated videos"
+    max_instances: 2
+    misfire_grace_time: 600
+  
+  # Upload videos
+  upload_videos:
+    enabled: true
+    cron: "0 9,12,18,21 * * *"  # 4 times daily at optimal times
+    description: "Upload processed videos to platforms"
+    max_instances: 1
+    misfire_grace_time: 300
+  
+  # Cleanup old files
+  cleanup_old_files:
+    enabled: true
+    cron: "0 2 * * 0"  # Weekly on Sunday at 2:00 AM
+    description: "Clean up old video files and logs"
+    max_instances: 1
+    misfire_grace_time: 3600
+  
+  # Health check
+  health_check:
+    enabled: true
+    cron: "*/30 * * * *"  # Every 30 minutes
+    description: "System health check and monitoring"
+    max_instances: 1
+    misfire_grace_time: 60
+
+# Execution policies
+execution:
+  # Concurrent job execution
+  max_concurrent_jobs: 5
+  
+  # Job queue settings
+  queue:
+    max_size: 100
+    overflow_policy: "discard_oldest"
+  
+  # Retry policy for failed jobs
+  retry:
+    enabled: true
+    max_retries: 3
+    retry_delay: 300
+  
+  # Timeout settings
+  timeouts:
+    default: 3600
+    discover: 600
+    analyze: 1800
+    generate: 3600
+    process: 1800
+    upload: 900
+
+# Notification settings
+notifications:
+  # When to send notifications
+  on_job_start: false
+  on_job_success: false
+  on_job_failure: true
+  on_job_missed: true
+  
+  # Notification methods
+  methods:
+    email: true
+    log: true
+
+# Maintenance windows
+maintenance:
+  # Times when no jobs should run
+  windows: []
+  # Example:
+  # - start: "01:00"
+  #   end: "02:00"
+  #   days: ["Saturday", "Sunday"]
+
+# Monitoring
+monitoring:
+  # Enable performance tracking
+  track_performance: true
+  
+  # Store job history
+  history:
+    enabled: true
+    retention_days: 30
+  
+  # Metrics to track
+  metrics:
+    - execution_time
+    - success_rate
+    - failure_count
+    - queue_size

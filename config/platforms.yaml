@@ -1,0 +1,112 @@
+# Platform upload configuration
+
+# YouTube configuration
+youtube:
+  enabled: true
+  
+  # OAuth credentials (set via environment variables)
+  # YOUTUBE_CLIENT_ID
+  # YOUTUBE_CLIENT_SECRET
+  
+  # Default upload settings
+  defaults:
+    category: "22"  # People & Blogs
+    privacy_status: "public"
+    made_for_kids: false
+    enable_comments: true
+    enable_ratings: true
+  
+  # Short-specific settings
+  shorts:
+    is_short: true
+    max_duration: 60
+    resolution: "1080x1920"
+    aspect_ratio: "9:16"
+  
+  # Upload limits
+  limits:
+    daily_uploads: 10
+    file_size_mb: 256
+  
+  # Metadata requirements
+  metadata:
+    title_max_length: 100
+    description_max_length: 5000
+    tags_max_count: 15
+
+# TikTok configuration (optional)
+tiktok:
+  enabled: false
+  
+  # API credentials (if available)
+  # TIKTOK_CLIENT_KEY
+  # TIKTOK_CLIENT_SECRET
+  
+  defaults:
+    privacy: "public"
+    allow_comments: true
+    allow_duet: true
+    allow_stitch: true
+  
+  limits:
+    max_duration: 60
+    file_size_mb: 287
+  
+  metadata:
+    caption_max_length: 150
+    hashtags_max_count: 10
+
+# Instagram configuration (optional)
+instagram:
+  enabled: false
+  
+  # API credentials
+  # INSTAGRAM_CLIENT_ID
+  # INSTAGRAM_CLIENT_SECRET
+  
+  # Reels settings
+  reels:
+    max_duration: 90
+    resolution: "1080x1920"
+  
+  defaults:
+    share_to_feed: true
+  
+  limits:
+    file_size_mb: 100
+  
+  metadata:
+    caption_max_length: 2200
+    hashtags_max_count: 30
+
+# General upload settings
+general:
+  # Retry configuration
+  retry:
+    max_attempts: 3
+    backoff_factor: 2
+  
+  # Upload optimization
+  optimization:
+    compress_before_upload: true
+    verify_after_upload: true
+  
+  # Scheduling
+  scheduling:
+    enabled: true
+    timezone: "UTC"
+    
+    # Best times to post (hour in 24h format)
+    optimal_times:
+      - 9
+      - 12
+      - 18
+      - 21
+  
+  # Notifications
+  notifications:
+    on_success: true
+    on_failure: true
+    methods:
+      - email
+      - log

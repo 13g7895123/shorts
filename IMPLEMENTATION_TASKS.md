@@ -10,9 +10,9 @@
 ## Phase 1: 基礎架構建立 (預估: 1-2天)
 
 ### Task 1.1: 專案結構初始化 ⚡ 優先
-- [ ] 創建所有目錄結構
-- [ ] 設置 `.gitignore` (加入 data/, database/, .env 等)
-- [ ] 更新 `pyproject.toml` 添加新依賴
+- [x] 創建所有目錄結構
+- [x] 設置 `.gitignore` (加入 data/, database/, .env 等)
+- [x] 更新 `pyproject.toml` 添加新依賴
   - `sqlalchemy` (ORM)
   - `alembic` (數據庫遷移)
   - `click` (CLI 工具)
@@ -22,25 +22,25 @@
   - `aiohttp` (異步 HTTP)
   - `opencv-python` (影片處理)
   - `ffmpeg-python` (影片處理)
-- [ ] 創建 `.env.example` 模板
-- [ ] 創建 `requirements.txt`
+- [x] 創建 `.env.example` 模板
+- [x] 創建 `requirements.txt`
 
 ### Task 1.2: 配置管理系統
-- [ ] 實作 `src/utils/config.py` - 配置加載器
-- [ ] 創建 `config/workflow.yaml` - 工作流程配置
-- [ ] 創建 `config/gemini.yaml` - Gemini API 配置
-- [ ] 創建 `config/sora.yaml` - Sora API 配置
-- [ ] 創建 `config/platforms.yaml` - 平台上傳配置
-- [ ] 創建 `config/schedule.yaml` - 排程配置
+- [x] 實作 `src/utils/config.py` - 配置加載器
+- [x] 創建 `config/workflow.yaml` - 工作流程配置
+- [x] 創建 `config/gemini.yaml` - Gemini API 配置
+- [x] 創建 `config/sora.yaml` - Sora API 配置
+- [x] 創建 `config/platforms.yaml` - 平台上傳配置
+- [x] 創建 `config/schedule.yaml` - 排程配置
 
 ### Task 1.3: 日誌系統
-- [ ] 實作 `src/utils/logger.py` - 統一日誌管理
-- [ ] 支援按模組、日期分類日誌
-- [ ] 支援 Console 和 File 雙輸出
-- [ ] 設置日誌輪轉機制
+- [x] 實作 `src/utils/logger.py` - 統一日誌管理
+- [x] 支援按模組、日期分類日誌
+- [x] 支援 Console 和 File 雙輸出
+- [x] 設置日誌輪轉機制
 
 ### Task 1.4: 異常處理系統
-- [ ] 實作 `src/utils/exceptions.py` - 自定義異常類
+- [x] 實作 `src/utils/exceptions.py` - 自定義異常類
   - `VideoDiscoveryError`
   - `AnalysisError`
   - `GenerationError`
@@ -52,26 +52,26 @@
 ## Phase 2: 數據存儲層 (預估: 1-2天)
 
 ### Task 2.1: 數據庫模型設計 ⚡ 優先
-- [ ] 實作 `src/storage/models.py` - SQLAlchemy 模型
+- [x] 實作 `src/storage/models.py` - SQLAlchemy 模型
   - `VideoURL` 模型
   - `Task` 模型
   - `GeneratedVideo` 模型
   - `PublishRecord` 模型
-- [ ] 實作 `src/storage/database.py` - 數據庫連接管理
-- [ ] 設置 Alembic 遷移環境
-- [ ] 創建初始化遷移腳本
+- [x] 實作 `src/storage/database.py` - 數據庫連接管理
+- [x] 設置 Alembic 遷移環境
+- [x] 創建初始化遷移腳本
 
 ### Task 2.2: Repository 層實作
-- [ ] 實作 `src/storage/repositories/video_repo.py`
+- [x] 實作 `src/storage/repositories/video_repo.py`
   - `add_url()` - 添加網址
   - `get_by_status()` - 按狀態查詢
   - `update_status()` - 更新狀態
   - `get_pending_urls()` - 獲取待處理網址
-- [ ] 實作 `src/storage/repositories/task_repo.py`
+- [x] 實作 `src/storage/repositories/task_repo.py`
   - `create_task()` - 創建任務
   - `update_task_status()` - 更新任務狀態
   - `get_failed_tasks()` - 獲取失敗任務
-- [ ] 實作 `src/storage/repositories/analytics_repo.py`
+- [x] 實作 `src/storage/repositories/analytics_repo.py`
   - `record_generation()` - 記錄生成數據
   - `get_statistics()` - 獲取統計數據
 
@@ -80,23 +80,23 @@
 ## Phase 3: 階段1-2 爆款發現與網址管理 (預估: 1天)
 
 ### Task 3.1: YouTube 監測模組重構
-- [ ] 將現有 `monitor.py` 重構到 `src/discovery/youtube_monitor.py`
-- [ ] 整合到新的數據庫系統
-- [ ] 自動將發現的爆款存入 `video_urls` 表
-- [ ] 添加去重邏輯
+- [x] 將現有 `monitor.py` 重構到 `src/discovery/youtube_monitor.py`
+- [x] 整合到新的數據庫系統
+- [x] 自動將發現的爆款存入 `video_urls` 表
+- [x] 添加去重邏輯
 
 ### Task 3.2: 手動網址輸入
-- [ ] 實作 `src/discovery/manual_input.py`
+- [x] 實作 `src/discovery/manual_input.py`
   - 支援單個網址添加
   - 支援批量導入 (CSV/JSON)
-- [ ] 實作 `src/discovery/url_validator.py`
+- [x] 實作 `src/discovery/url_validator.py`
   - 驗證 YouTube Shorts 網址格式
   - 檢查網址有效性
   - 提取 video_id
 
 ### Task 3.3: 腳本實作
-- [ ] 實作 `scripts/01_discover_viral.py` - 執行爆款監測
-- [ ] 實作 `scripts/02_add_urls.py` - CLI 添加網址工具
+- [x] 實作 `scripts/01_discover_viral.py` - 執行爆款監測
+- [x] 實作 `scripts/02_add_urls.py` - CLI 添加網址工具
 
 ---
 

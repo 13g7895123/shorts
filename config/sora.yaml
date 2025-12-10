@@ -1,0 +1,91 @@
+# Sora API configuration
+
+api:
+  # API base URL (set via environment variable SORA_API_URL)
+  # endpoint will be loaded from env
+  
+  # API version
+  version: "v1"
+  
+  # Request timeout (seconds)
+  timeout: 1800
+  
+  # Polling configuration for async generation
+  polling:
+    initial_delay: 10
+    max_delay: 60
+    backoff_factor: 1.5
+    max_polls: 120
+  
+  # Rate limiting
+  rate_limit:
+    requests_per_minute: 10
+    concurrent_generations: 3
+
+# Video generation settings
+generation:
+  # Default parameters
+  defaults:
+    duration: 60
+    resolution: "1080x1920"
+    fps: 30
+    style: "realistic"
+  
+  # Quality presets
+  quality_presets:
+    low:
+      bitrate: "2M"
+      resolution: "720x1280"
+    medium:
+      bitrate: "5M"
+      resolution: "1080x1920"
+    high:
+      bitrate: "10M"
+      resolution: "1080x1920"
+  
+  # Style options
+  styles:
+    realistic:
+      description: "Photorealistic style with natural lighting"
+      keywords: ["realistic", "photorealistic", "natural"]
+    
+    animated:
+      description: "Animated style with vibrant colors"
+      keywords: ["animated", "cartoon", "stylized"]
+    
+    artistic:
+      description: "Artistic style with creative effects"
+      keywords: ["artistic", "painterly", "creative"]
+    
+    cinematic:
+      description: "Cinematic style with dramatic lighting"
+      keywords: ["cinematic", "dramatic", "epic"]
+
+# Prompt enhancement
+prompt_enhancement:
+  enabled: true
+  
+  # Common additions
+  quality_terms:
+    - "high quality"
+    - "detailed"
+    - "sharp focus"
+  
+  # Technical terms
+  technical_terms:
+    - "professional grade"
+    - "4K quality"
+    - "smooth motion"
+
+# Error handling
+error_handling:
+  retry_on_errors:
+    - "timeout"
+    - "server_error"
+    - "rate_limit"
+  
+  max_retries: 3
+  
+  fallback:
+    enabled: true
+    lower_quality_on_failure: true

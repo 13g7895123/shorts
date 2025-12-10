@@ -1,0 +1,75 @@
+# Gemini AI API configuration
+
+api:
+  # API endpoint
+  endpoint: "https://generativelanguage.googleapis.com/v1beta"
+  
+  # Model configuration
+  model: "gemini-2.0-flash-exp"
+  
+  # Request parameters
+  parameters:
+    temperature: 0.7
+    top_p: 0.95
+    top_k: 40
+    max_output_tokens: 8192
+  
+  # Rate limiting
+  rate_limit:
+    requests_per_minute: 60
+    requests_per_day: 1500
+  
+  # Retry configuration
+  retry:
+    max_attempts: 3
+    backoff_base: 2
+    timeout: 60
+
+# Prompt templates
+prompts:
+  scene_analysis: |
+    Analyze this video and provide a detailed breakdown of scenes:
+    1. Identify key scenes and transitions
+    2. Describe visual elements in each scene
+    3. Note important actions or subjects
+    4. Suggest timing for scene changes
+    
+    Return the analysis in structured JSON format.
+  
+  prompt_generation: |
+    Based on the following scene analysis, generate detailed prompts for video generation:
+    
+    Scene Analysis:
+    {scene_data}
+    
+    For each scene, create a detailed prompt that includes:
+    - Visual description
+    - Mood and atmosphere
+    - Camera angles and movement
+    - Lighting and color palette
+    - Style and artistic direction
+    
+    Return prompts in JSON format with timing information.
+  
+  metadata_generation: |
+    Generate engaging metadata for a YouTube Short based on this content:
+    
+    Content Description:
+    {content_description}
+    
+    Generate:
+    1. An attention-grabbing title (max 100 characters)
+    2. A compelling description (max 5000 characters)
+    3. 10-15 relevant tags/hashtags
+    
+    Return in JSON format.
+
+# Content safety
+safety:
+  enabled: true
+  block_threshold: "BLOCK_MEDIUM_AND_ABOVE"
+  categories:
+    - HARM_CATEGORY_HARASSMENT
+    - HARM_CATEGORY_HATE_SPEECH
+    - HARM_CATEGORY_SEXUALLY_EXPLICIT
+    - HARM_CATEGORY_DANGEROUS_CONTENT

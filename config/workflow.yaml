@@ -1,0 +1,129 @@
+# Workflow configuration for the YouTube Shorts automation pipeline
+
+pipeline:
+  # Enable/disable specific stages
+  stages:
+    discovery: true
+    analysis: true
+    generation: true
+    processing: true
+    classification: true
+    publishing: true
+  
+  # Retry configuration
+  retry:
+    max_attempts: 3
+    backoff_factor: 2
+    max_delay: 300
+  
+  # Parallel processing
+  parallel:
+    enabled: true
+    max_workers: 4
+  
+  # Timeout settings (in seconds)
+  timeouts:
+    analysis: 600
+    generation: 1800
+    processing: 900
+    upload: 600
+
+# Discovery stage settings
+discovery:
+  # Monitor frequency (in hours)
+  check_interval: 24
+  
+  # Viral video criteria
+  viral_criteria:
+    min_views: 1000000
+    min_days_old: 1
+    max_days_old: 7
+  
+  # Channels to monitor
+  channels:
+    - "@MrBeast"
+    - "@mkbhd"
+  
+  # Maximum videos to discover per run
+  max_videos_per_run: 10
+
+# Analysis stage settings
+analysis:
+  # Scene detection sensitivity
+  scene_threshold: 0.4
+  
+  # Maximum scenes per video
+  max_scenes: 10
+  
+  # Analysis output format
+  output_format: "json"
+
+# Generation stage settings
+generation:
+  # Default style template
+  default_style: "realistic"
+  
+  # Available styles
+  styles:
+    - realistic
+    - animated
+    - artistic
+    - cinematic
+  
+  # Video specifications
+  specs:
+    duration: 60
+    resolution: "1080x1920"
+    fps: 30
+
+# Processing stage settings
+processing:
+  # Watermark removal
+  watermark_removal:
+    enabled: true
+    method: "auto"
+  
+  # Video optimization
+  optimization:
+    enabled: true
+    target_bitrate: "5M"
+    codec: "libx264"
+    preset: "medium"
+  
+  # File cleanup
+  cleanup:
+    keep_raw: false
+    keep_intermediate: false
+    cleanup_after_days: 7
+
+# Classification stage settings
+classification:
+  # Auto-categorize by content
+  auto_categorize: true
+  
+  # Categories
+  categories:
+    - tech
+    - entertainment
+    - education
+    - lifestyle
+    - gaming
+
+# Publishing stage settings
+publishing:
+  # Default platform
+  default_platform: "youtube"
+  
+  # Upload schedule
+  schedule:
+    enabled: true
+    timezone: "UTC"
+    daily_limit: 3
+  
+  # Privacy settings
+  privacy:
+    default: "public"
+    options:
+      - public
+      - unlisted
+      - private

@@ -1,0 +1,15 @@
+# Generated from pyproject.toml
+google-api-python-client>=2.187.0
+isodate>=0.7.2
+python-dotenv>=1.2.1
+sqlalchemy>=2.0.0
+alembic>=1.13.0
+click>=8.1.0
+pyyaml>=6.0
+fastapi>=0.109.0
+uvicorn>=0.27.0
+python-multipart>=0.0.6
+aiohttp>=3.9.0
+opencv-python>=4.9.0
+ffmpeg-python>=0.2.0
+apscheduler>=3.10.0

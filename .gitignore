@@ -9,4 +9,25 @@ wheels/
 # Virtual environments
 .venv
 
+# Environment variables
 .env
+
+# Data directories
+data/
+database/
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
