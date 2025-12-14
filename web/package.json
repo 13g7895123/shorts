@@ -1,0 +1,23 @@
+{
+  "name": "youtube-shorts-manager",
+  "version": "1.0.0",
+  "description": "YouTube Shorts Management System",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.3",
+    "@vueuse/core": "^14.1.0",
+    "axios": "^1.13.2",
+    "pinia": "^3.0.4",
+    "vite": "^7.2.7",
+    "vue": "^3.5.25",
+    "vue-router": "^4.6.4"
+  }
+}
